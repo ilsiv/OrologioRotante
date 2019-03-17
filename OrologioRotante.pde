@@ -5,8 +5,8 @@
 
 Clock clock;
 void setup() {
-  // size (600, 600);
-  fullScreen();
+  size (600, 600);
+  //fullScreen();
   //mono = loadFont("andalemo.ttf", 32);
 if (displayWidth>displayHeight){
   clock = new Clock(00, pixelHeight/2, pixelHeight/2);
@@ -19,7 +19,7 @@ if (displayWidth>displayHeight){
 
 
 void draw() {
-  background(200);
+  background(40);
   stroke (0);
   noFill();
 
@@ -131,7 +131,7 @@ class Corona {
       }
       millprev= milli;
     }
-    fill(0);
+    fill(200);
     textSize(tsize);
     strokeWeight((int)tsize/5);
 
@@ -155,7 +155,7 @@ class Corona {
         }
       } else
       {
-        fill(0);
+        fill(200);
         textSize(tsize);
         strokeWeight((int)tsize/5);
 
