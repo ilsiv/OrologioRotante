@@ -1,13 +1,14 @@
-//Inspiration from https://www.openprocessing.org/sketch/441988 //<>//
+//Inspiration from https://www.openprocessing.org/sketch/441988 //<>// //<>//
 //***
 
-// PFont mono;
+PFont font;
 
 Clock clock;
 void setup() {
-  size (600, 600);
-  //fullScreen();
-  //mono = loadFont("andalemo.ttf", 32);
+  //size (600, 600);
+  fullScreen();
+  font = loadFont("UbuntuMono-Bold-48.vlw");
+  textFont(font);
 if (displayWidth>displayHeight){
   clock = new Clock(00, pixelHeight/2, pixelHeight/2);
 }else{
@@ -16,6 +17,7 @@ if (displayWidth>displayHeight){
   clock.setup();
   // frameRate(10);
 }
+
 
 
 void draw() {
