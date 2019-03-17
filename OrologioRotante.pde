@@ -1,14 +1,18 @@
 //Inspiration from https://www.openprocessing.org/sketch/441988 //<>//
 //***
 
-PFont mono;
+// PFont mono;
 
 Clock clock;
 void setup() {
-  size (600, 600);
+  // size (600, 600);
+  fullScreen();
   //mono = loadFont("andalemo.ttf", 32);
-
-  clock = new Clock(00, 300, 200);
+if (displayWidth>displayHeight){
+  clock = new Clock(00, pixelHeight/2, pixelHeight/2);
+}else{
+  clock = new Clock(00, pixelHeight/2, pixelWidth/2);
+}
   clock.setup();
   // frameRate(10);
 }
@@ -55,13 +59,13 @@ class Clock {
   Clock(int x_, int y_, int r_) {
     x= x_;
     y= y_;
-    r=r_;
+    r= r_;
     h= hour();
     m= minute();
     s= second();
-    hh= new Corona(r, h, 24, 30);
-    mm= new Corona(r+50, m, 60, 20);
-    ss= new Corona(r+90, s, true, 60, 17);
+    hh= new Corona(r, h, 24,  floor(r/10));
+    mm= new Corona(floor(r*1.2), m, 60, floor(r/10*0.9));
+    ss= new Corona(floor(r*1.4), s, true, 60, floor(r/10*0.8));
   }
 
   void setup() {
@@ -69,17 +73,18 @@ class Clock {
   }
 
   void draw() {
+    int dchar= floor(r/10);
     if (h!= hour()) {
       h= hour();
-      hh= new Corona(r, h, 24, 30);
+      hh= new Corona(r, h, 24, dchar);
     }
     if (m!=minute()) {
       m= minute();
-      mm= new Corona(r+50, m, 60, 20);
+      mm= new Corona(floor(r*1.2), m, 60, floor(dchar*0.9));
     }
     if (s!= second()) {
       s= second();
-      ss= new Corona(r+90, s, true, 60, 17);
+      ss= new Corona(floor(r*1.4), s, true, 60, floor(dchar*0.8));
     }
     translate(x, y);
 
